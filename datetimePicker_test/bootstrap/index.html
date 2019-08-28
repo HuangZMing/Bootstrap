@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>移动经纪人分析</title>
+	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet"><!-- 引入bootstrap样式表 -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/echarts.min.js"></script>
+    <!--导入日期控制插件css-->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap-datetimepicker.min.css">
+
+
+    <!-- 条件注释，当版本小于IE9引入 -->
+    <!--[if lt IE 9]>
+      <script src="lib/html5shiv/html5shiv.min.js"></script>
+      <script src="lib/respond/respond.min.js"></script>
+    <![endif]-->
+   
+</head>
+<body style="border:0px">
+	<div class="container" style="position:absolute;left:0px;top:0px"><!-- 容器开始 -->
+		<div class='input-group date col-xs-5 col-md-2' id='datetimepicker1' style="position: absolute;left: 0px;top: 0px;">
+			<input type='text' class="form-control" value="" readonly style="border:none;background: #FFFFFF;text-align:right;padding:0 0 0 0;margin:0 0 0 0">
+			<span class="input-group-addon" style="border:none;background: #FFFFFF;padding-left: 1px">
+					<span class="glyphicon glyphicon-calendar" style="color:#4682B4">
+                      </span>
+                </span>
+		</div>
+		<div class='input-group date col-xs-4 col-md-2' id='datetimepicker2' style="position: absolute;left: 0px;top: 0px;display: none;" >
+			<input type='text' align="right" class="form-control" value="" readonly style="border:none;background: #FFFFFF;text-align:right;padding:0 0 0 0;margin:0 0 0 0">
+			<span class="input-group-addon" style="border:none;background: #FFFFFF;padding-left: 1px">
+					<span class="glyphicon glyphicon-calendar" style="color:#4682B4">
+                      </span>
+                </span>
+		</div>
+	  <div class="dateserch" style="position:absolute;left:40%;top:1%">
+营业部、分支机构 <span class="glyphicon glyphicon-search" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" aria-hidden="true"></span>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+    <li><a href="#" >Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+	 </div>
+      <div class="btn-group" style="position:absolute;left:80%;top:1%" role="group" aria-label="...">
+         <button type="button" style="width:25px;height:25px" class="btn btn-default" onclick="showDay()">日</button>
+         <button type="button" style="width:25px;height:25px" class="btn btn-default" onclick="showMonth()">月</button>
+      </div>
+	  <div class="btn-group-vertical" style="position:absolute;left:0px;top:6%;height:94%;width:22%;border-bottom:0;border-right:2px solid #4682B4; " role="group" aria-label="...">
+        <button type="button" id="btn1" onclick="btn_click1()" style="border-radius: 0;height:9%;background-color: #4682B4;color:#FFFFFF;" class="btn btn-default1">1</button>
+        <button type="button" id="btn2" onclick="btn_click2()" style="height:9%;background-color: #6CA6CD;color:#FFFFFF;position:absolute;bottom:27%;" class="btn btn-default2">2</button>
+		<button type="button" id="btn3" onclick="btn_click3()" style="height:9%;background-color: #4682B4;color:#FFFFFF;position:absolute;bottom:18%;" class="btn btn-default3">3</button>
+        <button type="button" id="btn4" onclick="btn_click4()" style="height:9%;background-color: #6CA6CD;color:#FFFFFF;position:absolute;bottom:9%;" class="btn btn-default4">4</button>
+		<button type="button" id="btn5" onclick="btn_click5()" style="border-radius: 0;height:9%;background-color: #4682B4;color:#FFFFFF;position:absolute;bottom:0px;" class="btn btn-default5">5</button>
+      </div>
+	  <div class="index-value1" style="border-right:1px solid #000000;">
+	  name<br>value
+	  </div>
+	  <div class="index-value2" >
+	  name<br>value
+	  </div>
+	  <div class="index-value3" style="border-right:1px solid #000000;">
+	  name<br>value
+	  </div>
+	  <div class="index-value4" >
+	  name<br>value
+	  </div>
+	  
+	  <div class="echarts-line" id="main" style="position:absolute;left:22.1%;top:22.92%;width:78%;height:35%;margin:0;padding-left:15px">
+		<script>
+	var myChart = echarts.init(document.getElementById('main'));
+			var option = {
+				xAxis: {
+							type: 'category',
+							data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+						},
+				yAxis: {
+							type: 'value'
+						},
+				series: [{
+							data: [82, 93, 90, 93, 129, 133, 132],
+							type: 'line'
+						}]
+						};
+			myChart.setOption(option);
+
+		</script>
+	  </div>
+	  <div class="btn-group" style="position:absolute;left:70%;bottom:29%;" role="group" aria-label="...">
+         <button type="button" style="width:35px;height:25px" class="btn btn-default">前五</button>
+         <button type="button" style="width:35px;height:25px" class="btn btn-default">后五</button>
+        </div> 
+	  <div class="top5" id="main1" style="position:absolute;left:22.1%;bottom:4%;width:78%;height:25%;margin:0;padding:1.5%">
+		<div class="btn-group-vertical" role="group" style="float:left;height:87%;width:10%;margin:1.5%">
+          <button type="button" class="btn btn-default" style="height:50%;font-size:x-small">分<br>公<br>司</button>
+		  <button type="button" class="btn btn-default" style="height:50%">营<br>业<br>部</button>
+         </div>
+		
+		<div class="progress" style="width:50%;float:right;margin:1.5%">
+		 <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+        </div>
+		<div class="progress" style="width:50%;float:right;margin:1.5%">
+		 <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div>
+        </div>
+		<div class="progress" style="width:50%;float:right;margin:1.5%">
+		 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+        </div>
+		<div class="progress" style="width:50%;float:right;margin:1.5%">
+		 <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div>
+        </div>
+		<div class="progress" style="width:50%;float:right;margin:1.5%">
+		 <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
+        </div>
+	  </div>
+	    <div class="bot-menu" style="line-height:29px;background-color: 	#C9C9C9;font-size:10px;bottom:0;height:4%;width:78%;position:absolute;left:22.1%">
+		查看更多
+		</div>
+</div><!-- 容器结束 -->
+    <!--在dom加载完后再执行后面的script-->
+    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+    <!-- 引入bootstrap -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <!--引入日期控制插件JS-->
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!-- 引入自己的JS -->
+	<script src="js/mystyle.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <!--<script src="js/main.js"></script>-->
+</body>
+</html>

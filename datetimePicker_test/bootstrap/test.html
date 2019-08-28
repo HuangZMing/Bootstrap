@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>移动经纪人分析</title>
+	<link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet"><!-- 引入bootstrap样式表 -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/pintuer.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="js/echarts.min.js"></script>
+	<script src="js/respond.js"></script>
+	
+    <!-- 条件注释，当版本小于IE9引入 -->
+    <!--[if lt IE 9]>
+      <script src="lib/html5shiv/html5shiv.min.js"></script>
+      <script src="lib/respond/respond.min.js"></script>
+    <![endif]-->
+   
+</head>
+<body>
+<div class="appbox">
+<table class="table">
+	<tr>
+		<th>
+			分支机构选取
+		</th>
+	</tr>
+	<tr>
+		<td>
+			上海分公司
+		</td>
+	</tr>
+	<tr>
+		<td>
+			北京分公司
+		</td>
+	</tr>
+	<tr>
+		<td>
+			深圳分公司
+		</td>
+	</tr>
+</table>
+<div class="collapse-toggle" >
+	<div class="panel" style="border:0;border-radius: 0;">
+		<div class="panel-head" style="border-bottom:0.5px solid gray;background-color:white">
+			<h4>
+            上海分公司</h4>
+		</div>
+		<div class="panel-body" onclick="allclick(this)">
+			黄浦区营业部</div>
+			<div class="panel-body">
+			浦东新区营业部</div>
+	</div>
+	<div class="panel" style="border:0">
+		<div class="panel-head" style="border-bottom:0.5px solid gray;background-color:white">
+			<h4>
+            北京分公司</h4>
+		</div>
+		<div class="panel-body">
+			天安门营业部</div>
+	</div>
+	<div class="panel" style="border:0;border-radius: 0;">
+		<div class="panel-head" style="border-bottom:0.5px solid gray;background-color:white">
+			<h4>
+            深圳分公司</h4>
+		</div>
+		<div class="panel-body">
+			xx路营业部</div>
+	</div>
+</div>
+
+
+    <!--在dom加载完后再执行后面的script-->
+    <script src="lib/jquery/jquery-3.4.1.min.js"></script>
+    <!-- 引入bootstrap -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="js/mystyle.js"></script>
+	<script src="js/pintuer.js"></script>
+    <script src="js/echarts.min.js"></script>
+	<script>
+	function allclick(a){
+	alert(a)
+	}
+	</script>
+    <!-- 引入自己的JS -->
+    <!--<script src="js/main.js"></script>-->
+	</div>
+</body>
+
+</html>

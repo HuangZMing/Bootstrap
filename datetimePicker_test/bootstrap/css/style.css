@@ -1,0 +1,12 @@
+html{height:100% ;margin:0}
+body {
+    padding:0;  /*去除内边距*/
+    border:0;   /*去除边框*/
+    margin:0;   /*去除外边距*/
+}
+.container{border:1px solid #000;width:100%;height:100%} 
+.button-left{width:80px;height:50px} 
+.index-value1{position:absolute;left:22.1%;top:6%;width:39%;height:8.46%;background:#EDEDED; color:#000000;text-align:center;}
+.index-value2{position:absolute;left:61.1%;top:6%;width:39%;height:8.46%;background:#EDEDED; color:#000000;text-align:center;}
+.index-value3{position:absolute;left:22.1%;top:14.46%;width:39%;height:8.46%;background:#FFFFFF; color:#000000;text-align:center;}
+.index-value4{position:absolute;left:61.1%;top:14.46%;width:39%;height:8.46%;background:#FFFFFF; color:#000000;text-align:center;}
